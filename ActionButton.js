@@ -7,7 +7,7 @@ import {
   View,
   Animated,
   TouchableOpacity,
-  TouchableWithoutFeedback,
+  TouchableWithoutFeedback, Image,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import ActionButtonItem from './ActionButtonItem';
@@ -119,6 +119,7 @@ export default class ActionButton extends Component {
               [
                 styles.btn,
                 {
+                  marginTop: 28,
                   width: this.props.size,
                   height: this.props.size,
                   borderRadius: this.props.size / 2,
@@ -126,6 +127,7 @@ export default class ActionButton extends Component {
                     inputRange: [0, 1],
                     outputRange: [this.props.buttonColor, this.props.btnOutRange]
                   }),
+
                   transform: [
                     {
                       scale: this.state.anim.interpolate({
@@ -141,6 +143,8 @@ export default class ActionButton extends Component {
                     }],
                 }]}>
             {this.renderButtonIcon()}
+            {/*<Image style={{alignSelf:"center"}} source={require('../../assets/logo.png')} />*/}
+
           </Animated.View>
         </TouchableOpacity>
       </View>
@@ -170,7 +174,7 @@ export default class ActionButton extends Component {
     if (!this.state.active) return null;
     const startDegree = this.props.startDegree || alignMap[this.props.position].startDegree;
     const endDegree = this.props.endDegree || alignMap[this.props.position].endDegree;
-    const startRadian = startDegree * Math.PI / 180;
+    const startRadian = startDegree  / 180;
     const endRadian = endDegree * Math.PI / 180;
 
     const childrenCount = React.Children.count(this.props.children);
