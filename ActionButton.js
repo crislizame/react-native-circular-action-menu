@@ -45,6 +45,16 @@ export default class ActionButton extends Component {
     };
 
     this.timeout = null;
+
+    if(!props.active){
+      var estee = setTimeout(() => {
+        this.setState({ active: false,
+        });
+        this.animateButton()
+        clearInterval(estee)
+      }, 800);
+    }
+
   }
 
   componentWillUnmount() {
@@ -75,6 +85,7 @@ export default class ActionButton extends Component {
 
 
   animateButton() {
+
     if (this.state.active) {
       this.reset();
       return;
@@ -89,12 +100,14 @@ export default class ActionButton extends Component {
   }
 
   reset() {
+
     Animated.spring(this.state.anim, {
       toValue: 0,
       duration: 250,
     }).start();
 
     setTimeout(() => {
+
       this.setState({ active: false });
     }, 250);
   }
