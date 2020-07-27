@@ -222,7 +222,7 @@ export default class ActionButton extends Component {
       backdrop = (
           <TouchableWithoutFeedback
               style={styles.overlay}
-              onPress={() => {this.reset(); this.props.onOverlayPress()}}
+              onPress={() => { this.props.onOverlayPress()}}
           >
             <Animated.View
                 style={
